@@ -18,7 +18,8 @@ Creating this project to train my knowledge acquired in React.js. This project a
 - React.js
 - Axios
 - React Router
-- Styled-components
+- Styled Components
+- React Icons
  
 <h2 id="Features">Features 🔥</h2>
 
