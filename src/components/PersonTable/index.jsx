@@ -4,17 +4,25 @@ import {BsPencilFill, BsFillTrashFill} from 'react-icons/bs'
 import {useState, useEffect} from 'react'
 
 import {getAllPersons} from '../../api/personAPI'
+import {deletePerson} from '../../api/personAPI'
 
 
 
 export default function PersonTable() {
     const [persons, setPersons] = useState([])
-
+    const [statusDelete, setStatusDelete] = useState(true)
     useEffect(() => {
         getAllPersons().then((result) => {
             setPersons(result)
         })
-    }, [])
+        setStatusDelete(false)
+    }, [statusDelete])
+
+    function delPerson(id){
+        console.log(id)
+        deletePerson(id)
+        setStatusDelete(true)
+    }
 
     function refactorPerson(person){
         if(person.active == 1 || person.active == "Sim"){
@@ -64,8 +72,8 @@ export default function PersonTable() {
                                     </Badge>
                                 </td>
                                 <td className="options">
-                                    <BsPencilFill color="#F58100" size="20"/> 
-                                    <BsFillTrashFill color="#FF1D23" size="20"/>
+                                    <BsPencilFill color="#F58100" size="20"/>
+                                    <BsFillTrashFill color="#FF1D23" size="20" onClick={() => delPerson(person.Id)}/>
                                 </td>
                             </tr>
                         ))
