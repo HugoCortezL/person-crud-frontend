@@ -16,6 +16,25 @@ export default function PersonTable() {
         })
     }, [])
 
+    function refactorPerson(person){
+        if(person.active == 1 || person.active == "Sim"){
+            person.active = "Sim"
+        }else{
+            person.active = "Não"
+        }
+        if(person.birthdate.length > 10){
+            var birthdateDay = person.birthdate.charAt(8) + person.birthdate.charAt(9)
+            var birthdateMonth = person.birthdate.charAt(5) + person.birthdate.charAt(6)
+            var birthdateYear = person.birthdate.charAt(0) + person.birthdate.charAt(1) + person.birthdate.charAt(2) + person.birthdate.charAt(3)
+            person.birthdate = birthdateDay + "/" + birthdateMonth + "/" + birthdateYear
+        }
+        console.log(person.active)
+    }
+
+    if(persons.length > 0){
+        persons.map(person => refactorPerson(person))
+    }
+
     return (
         <Container>
             <table>

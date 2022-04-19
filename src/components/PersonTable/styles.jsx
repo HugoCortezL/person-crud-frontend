@@ -43,9 +43,10 @@ export const Container = styled.div`
 `
 
 export const Badge = styled.div`
-    background-color: ${props => props.status ? '#ebf9eb' : '#fdebeb'};
-    color: ${props => props.status ? '#46c445' : '#f03739'};
+    background-color: ${props => props.status == "Sim" ? '#ebf9eb' : '#fdebeb'};
+    color: ${props => props.status == "Sim" ? '#46c445' : '#f03739'};
     display: inline;
     padding: 5px 10px;
     border-radius: 5px;
+    font-weight: bold;
 `
