@@ -29,7 +29,8 @@ Creating this project to train my knowledge acquired in React.js. This project a
 * [ ] Responsiveness
 * [X] Filter persons by name || Email
 * [ ] Filter Person By Gender
-* [ ] Sort Person By Name || Email || Gender || Age
+* [X] Sort Person By Name || Email || Gender || Age
+* [ ] Create pagination in all persons
 
 <h2 id="pre">Prerequisites ✏️</h2>
  

@@ -20,6 +20,28 @@ export const Container = styled.div`
         th{
             padding: 10px 0;
             font-size: 18px;
+            position: relative;
+            &.order{
+                cursor: pointer;
+            }
+            & i.arrow{
+                border: solid black;
+                border-width: 0 3px 3px 0;
+                display: inline-block;
+                padding: 3px;
+                position: absolute;
+                top: 15px;
+                margin-left: 10px;
+            }
+            & i.down{
+                transform: rotate(45deg);
+                -webkit-transform: rotate(45deg);
+            }
+            & i.up{
+                top: 20px;
+                transform: rotate(-135deg);
+                -webkit-transform: rotate(-135deg);
+            }
         }
         td{
             padding: 7px 0;

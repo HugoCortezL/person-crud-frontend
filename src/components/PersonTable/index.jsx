@@ -12,17 +12,38 @@ import {getAllPersons, deletePerson} from '../../api/personAPI'
 export default function PersonTable({searchText}) {
     const [persons, setPersons] = useState([])
     const [reload, setReload] = useState(true)
+    const [orderBy, setOrderBy] = useState('')
+    const [order, setOrder] = useState('')
 
     useEffect(() => {
-        getAllPersons(searchText).then((result) => {
+        getAllPersons(searchText, orderBy, order).then((result) => {
             setPersons(result)
         })
         setReload(false)
-    }, [reload, searchText])
+    }, [reload, searchText, orderBy, order])
 
     function delPerson(id){
         deletePerson(id)
         setReload(true)
+    }
+
+    function changeOrder(column, event){
+        const iElement = event.target.querySelector('i')
+        iElement.classList.add('down')
+        iElement.classList.remove('up')
+        if(orderBy == column){
+            if(order == 'asc'){
+                setOrder('desc')
+                iElement.classList.add('up')
+                iElement.classList.remove('down')
+            }else{
+                setOrder('asc')
+            }
+        }else{
+            setOrderBy(column)
+            setOrder('asc')
+        }
+        console.log(event.target.querySelector('i'))
     }
 
     function refactorPerson(person){
@@ -49,11 +70,23 @@ export default function PersonTable({searchText}) {
             <table>
                 <thead>
                     <tr>
-                        <th>Nome</th>
-                        <th>Email</th>
+                        <th onClick={() => changeOrder('firstname', event)} className="order"> 
+                            Nome 
+                            <i className="arrow down"></i>
+                        </th>
+                        <th onClick={() => changeOrder('email', event)} className="order">
+                            Email
+                            <i className="arrow down"></i>
+                        </th>
                         <th>Telefone</th>
-                        <th>Gênero</th>
-                        <th>Data de nascimento</th>
+                        <th onClick={() => changeOrder('gender', event)} className="order">
+                            Gênero
+                            <i className="arrow down"></i>
+                        </th>
+                        <th onClick={() => changeOrder('birthdate', event)} className="order">
+                            Data de nascimento
+                            <i className="arrow down"></i>
+                        </th>
                         <th>Ativo</th>
                         <th>Ações</th>
                     </tr>
