@@ -1,7 +1,7 @@
 import {Container, FormContainer, ButtonsContainer} from './styles'
 import TextInput from '../../components/TextInput'
 
-import {useEffect, useState} from 'react'
+import {useState} from 'react'
 
 import {createPerson} from '../../api/personAPI'
 

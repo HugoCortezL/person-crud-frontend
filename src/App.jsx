@@ -1,8 +1,8 @@
-import CreateEditPerson from './pages/CreateEditPerson'
+import Home from './pages/Home'
 function App() {
   return (
     <div>
-      <CreateEditPerson/>
+      <Home/>
     </div>
   )
 }

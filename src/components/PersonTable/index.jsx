@@ -19,7 +19,6 @@ export default function PersonTable() {
     }, [statusDelete])
 
     function delPerson(id){
-        console.log(id)
         deletePerson(id)
         setStatusDelete(true)
     }
@@ -36,7 +35,7 @@ export default function PersonTable() {
             var birthdateYear = person.birthdate.charAt(0) + person.birthdate.charAt(1) + person.birthdate.charAt(2) + person.birthdate.charAt(3)
             person.birthdate = birthdateDay + "/" + birthdateMonth + "/" + birthdateYear
         }
-        console.log(person.active)
+        
     }
 
     if(persons.length > 0){
