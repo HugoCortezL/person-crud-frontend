@@ -24,8 +24,8 @@ Creating this project to train my knowledge acquired in React.js. This project a
 <h2 id="Features">Features 🔥</h2>
 
 * [X] Page to see all Persons
-* [ ] Page to create/edit Person
-* [ ] Pagination
+* [X] Page to create/edit Person
+* [X] Pagination
 * [ ] Responsiveness
 * [ ] Filter persons by name || Email
 * [ ] Filter Person By Gender
