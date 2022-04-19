@@ -2,9 +2,9 @@ import axiosInstance from './APIUtils'
 
 const api = axiosInstance()
 
-export const getAllPersons = (async () => {
+export const getAllPersons = (async (searchText) => {
     return api
-            .get('/person')
+            .get(`/person?nameAndEmail=${searchText}`)
             .then(res => res.data)
             .catch(err => console.log(err))
 })

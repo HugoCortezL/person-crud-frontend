@@ -9,15 +9,16 @@ import {getAllPersons, deletePerson} from '../../api/personAPI'
 
 
 
-export default function PersonTable() {
+export default function PersonTable({searchText}) {
     const [persons, setPersons] = useState([])
     const [reload, setReload] = useState(true)
+
     useEffect(() => {
-        getAllPersons().then((result) => {
+        getAllPersons(searchText).then((result) => {
             setPersons(result)
         })
         setReload(false)
-    }, [reload])
+    }, [reload, searchText])
 
     function delPerson(id){
         deletePerson(id)
