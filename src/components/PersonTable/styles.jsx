@@ -5,7 +5,7 @@ export const Container = styled.div`
     background-color: #FFFFFF;
     display: flex;
     align-items: center;
-    box-shadow: 1px 3px 4px 0 rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 2px 4px 1px rgba(121, 121, 121, 0.3);
     border-radius: 8px;
     overflow: hidden;
     table{
