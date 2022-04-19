@@ -85,8 +85,24 @@ export const Container = styled.div`
         &.wrong{
             border-color: #FF0000;
         }
-        &.accept{
-            border-color: #00FF00;
+        &.search{
+            width: 85%;
+            @media (max-width: 783px){
+                width: 80%;
+            }
+            @media (max-width: 571px){
+                width: 75%;
+            }
+            @media (max-width: 451px){
+                width: 70%;
+            }
+            @media (max-width: 375px){
+                width: 60%;
+            }
+            @media (max-width: 281px){
+                width: 50%;
+            }
+            padding-left: 45px;
         }
     }
     select{

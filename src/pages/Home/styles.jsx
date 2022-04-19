@@ -14,25 +14,6 @@ export const SearchContainer = styled.div`
         top: 14px;
         left: 10px;
     }
-    input.search{
-        width: 85%;
-        @media (max-width: 783px){
-            width: 80%;
-        }
-        @media (max-width: 571px){
-            width: 75%;
-        }
-        @media (max-width: 451px){
-            width: 70%;
-        }
-        @media (max-width: 375px){
-            width: 60%;
-        }
-        @media (max-width: 281px){
-            width: 50%;
-        }
-        padding-left: 45px;
-    }
     button{
         height: 43px;
         width: 100px;
