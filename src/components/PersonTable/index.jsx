@@ -3,24 +3,25 @@ import {BsPencilFill, BsFillTrashFill} from 'react-icons/bs'
 
 import {useState, useEffect} from 'react'
 
-import {getAllPersons} from '../../api/personAPI'
-import {deletePerson} from '../../api/personAPI'
+import { Link } from "react-router-dom";
+
+import {getAllPersons, deletePerson} from '../../api/personAPI'
 
 
 
 export default function PersonTable() {
     const [persons, setPersons] = useState([])
-    const [statusDelete, setStatusDelete] = useState(true)
+    const [reload, setReload] = useState(true)
     useEffect(() => {
         getAllPersons().then((result) => {
             setPersons(result)
         })
-        setStatusDelete(false)
-    }, [statusDelete])
+        setReload(false)
+    }, [reload])
 
     function delPerson(id){
         deletePerson(id)
-        setStatusDelete(true)
+        setReload(true)
     }
 
     function refactorPerson(person){
@@ -71,7 +72,9 @@ export default function PersonTable() {
                                     </Badge>
                                 </td>
                                 <td className="options">
-                                    <BsPencilFill color="#F58100" size="20"/>
+                                    <Link to={`/editar/${person.Id}`}>
+                                        <BsPencilFill color="#F58100" size="20"/>
+                                    </Link>
                                     <BsFillTrashFill color="#FF1D23" size="20" onClick={() => delPerson(person.Id)}/>
                                 </td>
                             </tr>

@@ -11,8 +11,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<App/>}/>
-      <Route path="/criar" element={<CreateEditPerson/>} todo="create"/>
-      <Route path="/editar/:id" element={<CreateEditPerson/>} todo="edit"/>
+      <Route path="/criar" element={<CreateEditPerson/>}/>
+      <Route path="/editar/:id" element={<CreateEditPerson/>}/>
     </Routes>
     <GlobalStyle/>
   </BrowserRouter>

@@ -14,7 +14,7 @@ export default function Home() {
             <SearchContainer> 
                 <AiOutlineSearch className="icon" size={25} color="#c3c3c3"/>
                 <TextInput>
-                    <input type="text" class="search"/>
+                    <input type="text" className="search"/>
                 </TextInput>
                 <Link to={`/criar`}>
                     <button>

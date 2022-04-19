@@ -1,14 +1,16 @@
 import {Container, FormContainer, ButtonsContainer} from './styles'
 import TextInput from '../../components/TextInput'
 
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 
-import { Link, Navigate  } from "react-router-dom";
+import { Link, Navigate, useParams } from "react-router-dom";
 
-import {createPerson} from '../../api/personAPI'
+import {createPerson, getPersonById, updatePerson} from '../../api/personAPI'
 
-export default function CreateEditPerson() {
+export default function CreateEditPerson(props) {
+    const id = useParams().id
     const [personCreated, setPersonCreated] = useState(false)
+    const [fetchedPerson, setFetchedPerson] = useState(false)
     const [person, setPerson] = useState({
         firstname: "",
         lastname: "",
@@ -18,6 +20,39 @@ export default function CreateEditPerson() {
         birthdate: "",
         active: 1
     })
+
+    useEffect( () => {
+        async function fetchPerson() {
+            if(id && !fetchedPerson){
+                const personToEdit = await getPersonById(id)
+                
+                var birthdateDay = personToEdit.birthdate.charAt(8) + personToEdit.birthdate.charAt(9)
+                var birthdateMonth = personToEdit.birthdate.charAt(5) + personToEdit.birthdate.charAt(6)
+                var birthdateYear = personToEdit.birthdate.charAt(0) + personToEdit.birthdate.charAt(1) + personToEdit.birthdate.charAt(2) + personToEdit.birthdate.charAt(3)
+                personToEdit.birthdate = birthdateYear + "-" + birthdateMonth + "-" + birthdateDay
+
+
+                setPerson(personToEdit)
+                setFetchedPerson(true)
+            }
+        }
+        fetchPerson()
+    })
+
+    var title = ''
+    var todoButton = ''
+    if(id){
+        title="Editar pessoa"
+        todoButton = <button className="save" onClick={editPerson}>
+                        Salvar
+                    </button>
+    }else{
+        title="Criar pessoa"
+        todoButton = <button className="save" onClick={createNewPerson}>
+                        Criar
+                    </button>
+    }
+    
 
     function changePerson(){
         setPerson({
@@ -97,9 +132,18 @@ export default function CreateEditPerson() {
             setPersonCreated(true)
         }
     }
+
+    function editPerson(){
+        var personOk = checkPerson()
+        if(personOk){
+            updatePerson(id, person)
+            setPersonCreated(true)
+        }
+    }
+
     return (
         <Container>
-            <h1>Criar Pessoa</h1>
+            <h1>{title}</h1>
             <FormContainer>
                 <div className="grid-area-double">
                     <TextInput>
@@ -152,9 +196,7 @@ export default function CreateEditPerson() {
                         Cancelar
                     </button>
                 </Link>
-                <button className="save" onClick={createNewPerson}>
-                    Salvar
-                </button>
+                {todoButton}
                 {personCreated && <Navigate replace to="/"/>}
             </ButtonsContainer>
         </Container>
