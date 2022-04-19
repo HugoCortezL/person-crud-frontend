@@ -76,12 +76,18 @@ export const Container = styled.div`
     }
     input[type="text"], input[type="date"]{
         border: 1px solid transparent;
-        border-color: ${props => props.borderColor || '#c3c3c3'};
+        border-color: #c3c3c3;
         font-size: 18px;
         padding: 10px 15px;
         width: 100%;
         border-radius: 5px;
         margin-top: 5px;
+        &.wrong{
+            border-color: #FF0000;
+        }
+        &.accept{
+            border-color: #00FF00;
+        }
     }
     select{
         border: 1px solid transparent;
