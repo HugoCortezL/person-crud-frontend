@@ -1,5 +1,7 @@
-import {Container, Badge} from './styles'
+import {WebContainer, Badge, MobileContainer} from './styles'
 import {BsPencilFill, BsFillTrashFill} from 'react-icons/bs'
+
+import MobileListCard from '../MobileListCard'
 
 import {useState, useEffect} from 'react'
 
@@ -66,56 +68,67 @@ export default function PersonTable({searchText}) {
     }
 
     return (
-        <Container>
-            <table>
-                <thead>
-                    <tr>
-                        <th onClick={() => changeOrder('firstname', event)} className="order"> 
-                            Nome 
-                            <i className="arrow down"></i>
-                        </th>
-                        <th onClick={() => changeOrder('email', event)} className="order">
-                            Email
-                            <i className="arrow down"></i>
-                        </th>
-                        <th>Telefone</th>
-                        <th onClick={() => changeOrder('gender', event)} className="order">
-                            Gênero
-                            <i className="arrow down"></i>
-                        </th>
-                        <th onClick={() => changeOrder('birthdate', event)} className="order">
-                            Data de nascimento
-                            <i className="arrow down"></i>
-                        </th>
-                        <th>Ativo</th>
-                        <th>Ações</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {
-                        persons.map(person => (
-                            <tr key={person.Id}>
-                                <td>{person.firstname} {person.lastname}</td>
-                                <td>{person.email}</td>
-                                <td>{person.phone}</td>
-                                <td>{person.gender}</td>
-                                <td>{person.birthdate}</td>
-                                <td>
-                                    <Badge status={person.active}>
-                                        {person.active}
-                                    </Badge>
-                                </td>
-                                <td className="options">
-                                    <Link to={`/editar/${person.Id}`}>
-                                        <BsPencilFill color="#F58100" size="20"/>
-                                    </Link>
-                                    <BsFillTrashFill color="#FF1D23" size="20" onClick={() => delPerson(person.Id)}/>
-                                </td>
-                            </tr>
-                        ))
-                    }
-                </tbody>
-            </table>
-        </Container>
+        <>
+            <WebContainer>
+                <table>
+                    <thead>
+                        <tr>
+                            <th onClick={() => changeOrder('firstname', event)} className="order"> 
+                                Nome 
+                                <i className="arrow down"></i>
+                            </th>
+                            <th onClick={() => changeOrder('email', event)} className="order">
+                                Email
+                                <i className="arrow down"></i>
+                            </th>
+                            <th>Telefone</th>
+                            <th onClick={() => changeOrder('gender', event)} className="order">
+                                Gênero
+                                <i className="arrow down"></i>
+                            </th>
+                            <th onClick={() => changeOrder('birthdate', event)} className="order">
+                                Data de nascimento
+                                <i className="arrow down"></i>
+                            </th>
+                            <th>Ativo</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            persons.map(person => (
+                                <tr key={person.Id}>
+                                    <td>{person.firstname} {person.lastname}</td>
+                                    <td>{person.email}</td>
+                                    <td>{person.phone}</td>
+                                    <td>{person.gender}</td>
+                                    <td>{person.birthdate}</td>
+                                    <td>
+                                        <Badge status={person.active}>
+                                            {person.active}
+                                        </Badge>
+                                    </td>
+                                    <td className="options">
+                                        <Link to={`/editar/${person.Id}`}>
+                                            <BsPencilFill color="#F58100" size="20"/>
+                                        </Link>
+                                        <BsFillTrashFill color="#FF1D23" size="20" onClick={() => delPerson(person.Id)}/>
+                                    </td>
+                                </tr>
+                            ))
+                        }
+                    </tbody>
+                </table>
+            </WebContainer>
+            <MobileContainer>
+                {
+                    persons.map(person => (
+                        <MobileListCard person={person}>
+                            <BsFillTrashFill color="#FF1D23" size="20" onClick={() => delPerson(person.Id)}/>
+                        </MobileListCard>
+                    ))
+                }
+            </MobileContainer>
+        </>
     )
 }

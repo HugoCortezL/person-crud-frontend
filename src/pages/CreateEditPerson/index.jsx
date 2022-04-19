@@ -181,12 +181,15 @@ export default function CreateEditPerson(props) {
                         <input type="date"  id="birthdate" value={person.birthdate} onChange={changePerson}/>
                     </TextInput>
                     <TextInput className="active">
-                        <span className="left"> Sim </span>
-                        <label className="switch">
-                            <input type="checkbox"  id="active" value={person.active} onChange={changePersonActive}/>
-                            <span className="slider round"></span>
-                        </label>
-                        <span className="right"> Não </span>
+                        <label>Ativo</label>
+                        <TextInput className="yes-no">
+                            <span className="left"> Sim </span>
+                            <label className="switch">
+                                <input type="checkbox"  id="active" value={person.active} onChange={changePersonActive}/>
+                                <span className="slider round"></span>
+                            </label>
+                            <span className="right"> Não </span>
+                        </TextInput>
                     </TextInput>
                 </div>
             </FormContainer>

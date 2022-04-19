@@ -1,13 +1,16 @@
 import styled from 'styled-components'
 
-export const Container = styled.div`
-    width: 100%;
-    background-color: #FFFFFF;
-    display: flex;
-    align-items: center;
-    box-shadow: 0px 2px 4px 1px rgba(121, 121, 121, 0.3);
-    border-radius: 8px;
-    overflow: hidden;
+export const WebContainer = styled.div`
+    display: none;
+    @media (min-width: 1051px) {
+        width: 100%;
+        background-color: #FFFFFF;
+        display: flex;
+        align-items: center;
+        box-shadow: 0px 2px 4px 1px rgba(121, 121, 121, 0.3);
+        border-radius: 8px;
+        overflow: hidden;
+    }
     table{
         width: 100%;
         border-collapse: collapse;
@@ -71,4 +74,19 @@ export const Badge = styled.div`
     padding: 5px 10px;
     border-radius: 5px;
     font-weight: bold;
+`
+
+export const MobileContainer = styled.div`
+    display: none;
+    @media (max-width: 1050px) {
+        display: grid;
+        grid-template-columns: 31% 31% 31%;
+        justify-content: space-between;
+    }
+    @media (max-width: 824px) {
+        grid-template-columns: 49% 49%;
+    }
+    @media (max-width: 490px) {
+        grid-template-columns: 100%;
+    }
 `

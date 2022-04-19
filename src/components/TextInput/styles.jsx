@@ -2,17 +2,20 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
     &.active{
-        display: flex;
-        align-items: center;
-        margin-top: 25px;
-        span{
-            font-size: 18px;
-        }
-        span.left{
-            margin-right: 10px;
-        }
-        span.right{
-            margin-left: 10px;
+        margin-top: -10px;
+        .yes-no{
+            display: flex;
+            align-items: center;
+            padding-top: 7px;
+            span{
+                font-size: 18px;
+            }
+            span.left{
+                margin-right: 10px;
+            }
+            span.right{
+                margin-left: 10px;
+            }
         }
     }
     label{
@@ -41,7 +44,7 @@ export const Container = styled.div`
                     }
                 }
                 &:focus + .slider{
-                    box-shadow: 0 0 1px #2196F3;
+                    box-shadow: 0 0 1px #c3c3c3;
                 }
             }
             .slider{

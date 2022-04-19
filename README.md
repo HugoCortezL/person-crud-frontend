@@ -31,6 +31,8 @@ Creating this project to train my knowledge acquired in React.js. This project a
 * [ ] Filter Person By Gender
 * [X] Sort Person By Name || Email || Gender || Age
 * [ ] Create pagination in all persons
+* [ ] Specific error message
+* [ ] Confirm person deletation
 
 <h2 id="pre">Prerequisites ✏️</h2>
  
