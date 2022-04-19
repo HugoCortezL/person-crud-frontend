@@ -26,7 +26,7 @@ Creating this project to train my knowledge acquired in React.js. This project a
 * [X] Page to see all Persons
 * [X] Page to create/edit Person
 * [X] Pagination
-* [ ] Responsiveness
+* [X] Responsiveness
 * [X] Filter persons by name || Email
 * [ ] Filter Person By Gender
 * [X] Sort Person By Name || Email || Gender || Age
