@@ -3,9 +3,12 @@ import TextInput from '../../components/TextInput'
 
 import {useState} from 'react'
 
+import { Link, Navigate  } from "react-router-dom";
+
 import {createPerson} from '../../api/personAPI'
 
 export default function CreateEditPerson() {
+    const [personCreated, setPersonCreated] = useState(false)
     const [person, setPerson] = useState({
         firstname: "",
         lastname: "",
@@ -81,15 +84,6 @@ export default function CreateEditPerson() {
                         }
                     }
                 }
-                if(input.id == "email"){
-                    let isEmail = /^[a-z0-9.]+@[a-z0-9]+\.[a-z]+\.[a-z]?$/i.test(input.value)
-                    if(!isEmail){
-                        input.classList.add("wrong");
-                        if (checked){
-                            checked = false
-                        }
-                    }
-                }
             }
         })
 
@@ -100,6 +94,7 @@ export default function CreateEditPerson() {
         var personOk = checkPerson()
         if(personOk){
             createPerson(person)
+            setPersonCreated(true)
         }
     }
     return (
@@ -152,12 +147,15 @@ export default function CreateEditPerson() {
                 </div>
             </FormContainer>
             <ButtonsContainer>
-                <button className="cancel">
-                    Cancelar
-                </button>
+                <Link to={`/`}>
+                    <button className="cancel">
+                        Cancelar
+                    </button>
+                </Link>
                 <button className="save" onClick={createNewPerson}>
                     Salvar
                 </button>
+                {personCreated && <Navigate replace to="/"/>}
             </ButtonsContainer>
         </Container>
     )

@@ -47,13 +47,13 @@ export default function PersonTable() {
             <table>
                 <thead>
                     <tr>
-                        <th>Name</th>
+                        <th>Nome</th>
                         <th>Email</th>
-                        <th>Phone</th>
-                        <th>Gender</th>
-                        <th>Birth Date</th>
-                        <th>Active</th>
-                        <th>Options</th>
+                        <th>Telefone</th>
+                        <th>Gênero</th>
+                        <th>Data de nascimento</th>
+                        <th>Ativo</th>
+                        <th>Ações</th>
                     </tr>
                 </thead>
                 <tbody>
